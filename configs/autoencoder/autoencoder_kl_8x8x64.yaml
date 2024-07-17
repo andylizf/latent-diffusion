@@ -26,18 +26,17 @@ model:
 data:
   target: main.DataModuleFromConfig
   params:
-    batch_size: 12
-    wrap: True
+    batch_size: 5
+    num_workers: 5
+    wrap: false
     train:
-      target: ldm.data.imagenet.ImageNetSRTrain
+      target: ldm.data.lsun.FHQTrain
       params:
         size: 256
-        degradation: pil_nearest
     validation:
-      target: ldm.data.imagenet.ImageNetSRValidation
+      target: ldm.data.lsun.FHQValidation
       params:
         size: 256
-        degradation: pil_nearest
 
 lightning:
   callbacks:
